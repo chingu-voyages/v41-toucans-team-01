@@ -33,3 +33,13 @@ Installs required dependencies
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+# Using the API
+
+- Log-in to [Openweathermap.org](https://openweathermap.org/)
+
+- Create an API key
+
+- cd src/apis/openweathermap.js
+
+- Paste API key for `OPENWEATHER_API_KEY`
