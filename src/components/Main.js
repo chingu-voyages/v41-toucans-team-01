@@ -1,7 +1,9 @@
+import PrimaryNav from "./navigations/PrimaryNav";
+
 const Main = () => {
   return (
     <main>
-      <h1>Weathrr App</h1>
+      <PrimaryNav />
     </main>
   );
 };

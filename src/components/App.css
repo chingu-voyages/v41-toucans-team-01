@@ -1,0 +1,26 @@
+:root {
+  --roboto: "Roboto", sans-serif;
+  --green: #91fd8e;
+  --purple: #bf6dff;
+  --background-color: #f5f5f5;
+  --black: #000000;
+  --white: #ffffff;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: var(--roboto);
+  color: var(--black);
+}
