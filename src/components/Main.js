@@ -16,6 +16,8 @@ const Main = () => {
       setWeatherData(data);
     };
     getData();
+
+    // Dependency array, empty if you only want to run on mount
   }, []);
 
   return (
