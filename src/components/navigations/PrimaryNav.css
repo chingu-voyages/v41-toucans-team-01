@@ -33,6 +33,7 @@
   align-items: center;
   gap: 3rem;
   transform: translateX(-100%);
+  transition: transform 300ms ease-out;
   padding-top: 8rem;
   z-index: 99;
   font-size: 1.8rem;
@@ -45,7 +46,7 @@
 
 .nav-list[data-visible="true"] {
   transform: translateX(0%);
-  border: 2px solid var(--black);
+  border: 1px solid var(--black);
 }
 
 .logo {
