@@ -43,3 +43,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 - cd src/apis/openweathermap.js
 
 - Paste API key for `OPENWEATHER_API_KEY`
+
+- API documentation: https://openweathermap.org/current
