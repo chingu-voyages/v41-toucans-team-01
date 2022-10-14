@@ -23,7 +23,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - Clone the project to your local directory.
 
-In the project directory, you can run:
+- Cd into the project directory and run:
 
 ### `npm install`
 
