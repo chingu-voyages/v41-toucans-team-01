@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import PrimaryNav from "./navigations/PrimaryNav";
 import SecondaryNav from "./navigations/SecondaryNav";
 import weatherApi from "../apis/openweathermap";
+import "./Main.css";
 
 const Main = () => {
   // Variable to hold/set data in state
@@ -19,11 +20,11 @@ const Main = () => {
   }, []);
 
   return (
-    <main>
+    <>
       <PrimaryNav />
+      <main className="content-container">{JSON.stringify(weatherData)}</main>
       <SecondaryNav />
-      {JSON.stringify(weatherData)}
-    </main>
+    </>
   );
 };
 
