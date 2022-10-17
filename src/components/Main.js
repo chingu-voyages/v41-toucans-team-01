@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import PrimaryNav from "./navigations/PrimaryNav";
 import SecondaryNav from "./navigations/SecondaryNav";
 import weatherApi from "../apis/openweathermap";
+import fetchUserCity from "../apis/ipapi";
 import "./Main.css";
 
 const Main = () => {
@@ -11,12 +12,17 @@ const Main = () => {
   useEffect(() => {
     // Function so that weatherApi method can be called async because
     // useEffect callback can not be async
-    const getData = async () => {
-      const data = await weatherApi.loadWeather("London, Uk");
+    const getData = async (city) => {
+      const data = await weatherApi.loadWeather(city);
       console.log(data);
       setWeatherData(data);
     };
-    getData();
+    //get user's city with ipapi and fetch user data with city value
+    const getCity = async () => {
+      const cityData = await fetchUserCity();
+      getData(cityData.city);
+    };
+    getCity();
   }, []);
 
   return (
