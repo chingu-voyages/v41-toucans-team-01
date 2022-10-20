@@ -1,8 +1,6 @@
 .current-weather-card {
   background-color: var(--white);
   width: 100%;
-  max-width: 33rem;
-  margin: 0 auto;
   padding: 1.5rem;
   border-radius: 2rem;
   border: 1px solid var(--black);
@@ -21,6 +19,7 @@
 
 .location-title {
   font-size: 2.5rem;
+  font-weight: 500;
 }
 
 .country {
@@ -40,6 +39,7 @@
 
 .current-temperature > h1 {
   margin-block-end: 1rem;
+  font-weight: 500;
 }
 
 .current-weather-range {
