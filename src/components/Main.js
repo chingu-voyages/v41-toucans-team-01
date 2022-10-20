@@ -3,6 +3,7 @@ import PrimaryNav from "./navigations/PrimaryNav";
 import SecondaryNav from "./navigations/SecondaryNav";
 import weatherApi from "../apis/openweathermap";
 import fetchUserCity from "../apis/ipapi";
+import WeatherCard from "./weather/WeatherCard";
 import "./Main.css";
 
 const Main = () => {
@@ -28,7 +29,9 @@ const Main = () => {
   return (
     <>
       <PrimaryNav />
-      <main className="content-container">{JSON.stringify(weatherData)}</main>
+      <main className="content-container">
+        <WeatherCard weatherData={weatherData} />
+      </main>
       <SecondaryNav />
     </>
   );
