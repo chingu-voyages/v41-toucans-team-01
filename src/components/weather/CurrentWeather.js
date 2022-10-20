@@ -1,6 +1,6 @@
 import "./CurrentWeatherCard.css";
 
-const CurrentWeather = () => {
+const CurrentWeather = (props) => {
   return (
     <div className="current-weather-card">
       <div className="weather-location">
@@ -10,15 +10,15 @@ const CurrentWeather = () => {
           className="location-icon"
         />
         <h1 className="location-title">
-          London, <span className="country">UK</span>
+          {props.city}, <span className="country">{props.country}</span>
         </h1>
       </div>
       <div className="current-temperature-details">
         <div className="current-temperature">
-          <h1>12°</h1>
+          <h1>{props.temp}°</h1>
           <div className="current-weather-range">
-            <span>L: 8°</span>
-            <span>H: 15°</span>
+            <span>L: {props.temp_min}°</span>
+            <span>H: {props.temp_max}°</span>
           </div>
         </div>
         <div className="current-temperature-icon">
