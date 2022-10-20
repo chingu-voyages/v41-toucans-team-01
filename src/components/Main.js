@@ -8,7 +8,7 @@ import "./Main.css";
 
 const Main = () => {
   // Variable to hold/set data in state
-  const [weatherData, setWeatherData] = useState([]);
+  const [weatherData, setWeatherData] = useState({});
 
   useEffect(() => {
     // Function so that weatherApi method can be called async because
@@ -30,7 +30,7 @@ const Main = () => {
     <>
       <PrimaryNav />
       <main className="content-container">
-        <WeatherCard weatherData={weatherData} />
+        {weatherData.main && <WeatherCard weatherData={weatherData} />}
       </main>
       <SecondaryNav />
     </>
