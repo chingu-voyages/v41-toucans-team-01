@@ -1,0 +1,12 @@
+.weather-card {
+  width: 95%;
+  max-width: 33rem;
+  margin: 0 auto;
+}
+
+.weather-properties {
+  display: grid;
+  grid-template: auto auto / repeat(2, 1fr);
+  gap: 1rem;
+  margin-block: 1rem;
+}
