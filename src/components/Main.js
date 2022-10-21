@@ -3,12 +3,14 @@ import PrimaryNav from "./navigations/PrimaryNav";
 import SecondaryNav from "./navigations/SecondaryNav";
 import weatherApi from "../apis/openweathermap";
 import fetchUserCity from "../apis/ipapi";
+import loadAirQuality from "../apis/waqi";
 import WeatherCard from "./weather/WeatherCard";
 import "./Main.css";
 
 const Main = () => {
   // Variable to hold/set data in state
   const [weatherData, setWeatherData] = useState({});
+  const [airData, setAirData] = useState({ quality: 0, description: "Good" });
 
   useEffect(() => {
     // Function so that weatherApi method can be called async because
@@ -18,10 +20,32 @@ const Main = () => {
       console.log(data);
       setWeatherData(data);
     };
+    //get air quality from api with user location
+    const getAirQuality = async (city) => {
+      const airData = await loadAirQuality(city);
+      setAirData(() => {
+        let desc;
+        if (airData.aqi >= 0 && airData.aqi <= 50) {
+          desc = "Good";
+        } else if (airData.aqi > 50 && airData.aqi <= 100) {
+          desc = "Moderate";
+        } else if (airData.aqi > 100 && airData.aqi <= 150) {
+          desc = "Sensitive";
+        } else if (airData.aqi > 150 && airData.aqi <= 200) {
+          desc = "Unhealthy";
+        } else if (airData.aqi > 200 && airData.aqi <= 300) {
+          desc = "Very Unhealthy";
+        } else if (airData.aqi > 300) {
+          desc = "Hazardous";
+        }
+        return { quality: airData.aqi, description: desc };
+      });
+    };
     //get user's city with ipapi and fetch user data with city value
     const getCity = async () => {
       const cityData = await fetchUserCity();
       getData(cityData.city);
+      getAirQuality(cityData.city);
     };
     getCity();
   }, []);
@@ -30,7 +54,9 @@ const Main = () => {
     <>
       <PrimaryNav />
       <main className="content-container">
-        {weatherData.main && <WeatherCard weatherData={weatherData} />}
+        {weatherData.main && (
+          <WeatherCard weatherData={weatherData} airData={airData} />
+        )}
       </main>
       <SecondaryNav />
     </>
