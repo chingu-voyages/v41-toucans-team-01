@@ -2,7 +2,7 @@ import CurrentWeather from "./CurrentWeather";
 import WeatherProperty from "./WeatherProperty";
 import "./WeatherCard.css";
 
-const WeatherCard = ({ weatherData }) => {
+const WeatherCard = ({ weatherData, airData }) => {
   return (
     <div className="weather-card">
       <CurrentWeather
@@ -27,6 +27,11 @@ const WeatherCard = ({ weatherData }) => {
           title="feels like"
           value={`${weatherData.main.feels_like}°`}
           icon="feels-like.png"
+        />
+        <WeatherProperty
+          title="air quality"
+          value={`${airData.quality} ${airData.description}`}
+          icon="air-quality.png"
         />
       </div>
     </div>
