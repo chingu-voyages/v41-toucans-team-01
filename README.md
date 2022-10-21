@@ -36,6 +36,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 # Using the API
 
+### OpenWeatherMap API
+
 - Log-in to [Openweathermap.org](https://openweathermap.org/)
 
 - Create an API key
@@ -45,3 +47,14 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 - Paste API key for `OPENWEATHER_API_KEY`
 
 - API documentation: https://openweathermap.org/current
+
+### Ip API
+- Fetch api data from https://ipapi.co/json
+- API documentation: https://ipapi.co/api/
+
+### Waqi API 
+- Log-in to https://aqicn.org/data-platform/token/
+- Create an API key
+- cd src/apis/waqi.js
+- paste API keky for `WAQI_API_KEY`
+- API documentation: https://aqicn.org/api/
