@@ -12,40 +12,49 @@ const Main = () => {
   const [weatherData, setWeatherData] = useState({});
   const [airData, setAirData] = useState({ quality: 0, description: "Good" });
 
+  // Function so that weatherApi method can be called async because
+  // useEffect callback can not be async
+  const getData = async (city) => {
+    const data = await weatherApi.loadWeather(city);
+    console.log(data);
+    setWeatherData(data);
+  };
+
+  //get air quality from api with user location
+  const getAirQuality = async (city) => {
+    const airData = await loadAirQuality(city);
+    setAirData(() => {
+      let desc;
+      if (airData.aqi >= 0 && airData.aqi <= 50) {
+        desc = "Good";
+      } else if (airData.aqi > 50 && airData.aqi <= 100) {
+        desc = "Moderate";
+      } else if (airData.aqi > 100 && airData.aqi <= 150) {
+        desc = "Sensitive";
+      } else if (airData.aqi > 150 && airData.aqi <= 200) {
+        desc = "Unhealthy";
+      } else if (airData.aqi > 200 && airData.aqi <= 300) {
+        desc = "Very Unhealthy";
+      } else if (airData.aqi > 300) {
+        desc = "Hazardous";
+      }
+      return { quality: airData.aqi, description: desc };
+    });
+  };
+
+  //function to fetch all data from the different api calls
+  //this is so that we can implement a search function to call all
+  //the different apis and render the value to the page.
+  const fetchWeatherData = (city) => {
+    getData(city);
+    getAirQuality(city);
+  };
+
   useEffect(() => {
-    // Function so that weatherApi method can be called async because
-    // useEffect callback can not be async
-    const getData = async (city) => {
-      const data = await weatherApi.loadWeather(city);
-      console.log(data);
-      setWeatherData(data);
-    };
-    //get air quality from api with user location
-    const getAirQuality = async (city) => {
-      const airData = await loadAirQuality(city);
-      setAirData(() => {
-        let desc;
-        if (airData.aqi >= 0 && airData.aqi <= 50) {
-          desc = "Good";
-        } else if (airData.aqi > 50 && airData.aqi <= 100) {
-          desc = "Moderate";
-        } else if (airData.aqi > 100 && airData.aqi <= 150) {
-          desc = "Sensitive";
-        } else if (airData.aqi > 150 && airData.aqi <= 200) {
-          desc = "Unhealthy";
-        } else if (airData.aqi > 200 && airData.aqi <= 300) {
-          desc = "Very Unhealthy";
-        } else if (airData.aqi > 300) {
-          desc = "Hazardous";
-        }
-        return { quality: airData.aqi, description: desc };
-      });
-    };
     //get user's city with ipapi and fetch user data with city value
     const getCity = async () => {
       const cityData = await fetchUserCity();
-      getData(cityData.city);
-      getAirQuality(cityData.city);
+      fetchWeatherData(cityData.city);
     };
     getCity();
   }, []);
