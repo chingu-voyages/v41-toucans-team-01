@@ -4,6 +4,11 @@
   margin: 0 auto;
 }
 
+.current-date {
+  font-size: 1.5rem;
+  margin-block: 0.5rem;
+}
+
 .weather-properties {
   display: grid;
   grid-template: auto auto / repeat(2, 1fr);

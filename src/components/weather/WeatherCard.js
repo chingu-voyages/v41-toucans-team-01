@@ -2,9 +2,16 @@ import CurrentWeather from "./CurrentWeather";
 import WeatherProperty from "./WeatherProperty";
 import "./WeatherCard.css";
 
+import fetchDate from "../helpers/fetchDate";
+
 const WeatherCard = ({ weatherData, airData }) => {
+  const currentDate = fetchDate(weatherData.dt);
+
   return (
     <div className="weather-card">
+      <div className="current-date">
+        {currentDate.weekday}, {currentDate.date} {currentDate.month}
+      </div>
       <CurrentWeather
         city={weatherData.name}
         country={weatherData.sys.country}
