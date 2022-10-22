@@ -1,0 +1,19 @@
+.weather-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.weather-search-input {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  border-bottom: 0.2rem solid var(--black);
+  width: 80%;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  font-size: 3.6rem;
+  margin-block-end: 1rem;
+}
+.weather-search-input::placeholder {
+  color: var(--grey);
+}

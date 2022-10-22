@@ -1,5 +1,7 @@
 .content-container {
-  width: 100%;
+  width: 95%;
+  max-width: 33rem;
+  margin: 0 auto;
   height: auto;
   word-wrap: break-word;
   font-size: 1.6rem;
