@@ -5,6 +5,7 @@ import weatherApi from "../apis/openweathermap";
 import fetchUserCity from "../apis/ipapi";
 import loadAirQuality from "../apis/waqi";
 import WeatherCard from "./weather/WeatherCard";
+import WeatherSearchBar from "./search/WeatherSearchBar";
 import "./Main.css";
 
 const Main = () => {
@@ -63,6 +64,7 @@ const Main = () => {
     <>
       <PrimaryNav />
       <main className="content-container">
+        <WeatherSearchBar fetchWeatherData={fetchWeatherData} />
         {weatherData.main && (
           <WeatherCard weatherData={weatherData} airData={airData} />
         )}
