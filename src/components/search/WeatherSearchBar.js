@@ -11,6 +11,7 @@ const WeatherSearchBar = ({ fetchWeatherData }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     fetchWeatherData(searchTerm);
+    setSearchTerm("");
   };
 
   return (
