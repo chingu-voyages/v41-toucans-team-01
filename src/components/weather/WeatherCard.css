@@ -8,6 +8,10 @@
   margin-block: 0.5rem;
 }
 
+.hourly-forecast {
+  margin-block-start: 1rem;
+}
+
 .weather-properties {
   display: grid;
   grid-template: auto auto / repeat(2, 1fr);
