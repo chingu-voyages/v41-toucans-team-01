@@ -1,5 +1,6 @@
 import CurrentWeather from "./CurrentWeather";
 import WeatherProperty from "./WeatherProperty";
+import Hour from "../forecast/Hour";
 import "./WeatherCard.css";
 
 import fetchDate from "../helpers/fetchDate";
@@ -19,6 +20,9 @@ const WeatherCard = ({ weatherData, airData }) => {
         temp_max={weatherData.main.temp_max}
         temp_min={weatherData.main.temp_min}
       />
+      <div className="hourly-forecast">
+        <Hour temp="12°" id="Now" icon="sunny.png" />
+      </div>
       <div className="weather-properties">
         <WeatherProperty
           title="humidity"
