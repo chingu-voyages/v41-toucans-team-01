@@ -22,6 +22,9 @@ const WeatherSearchBar = ({ fetchWeatherData }) => {
         value={searchTerm}
         onChange={handleChange}
       />
+      <span className="search-icon">
+        <img src="./icons/search-icon.png" />
+      </span>
     </form>
   );
 };
