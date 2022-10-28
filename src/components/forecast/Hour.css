@@ -1,5 +1,6 @@
 .hour {
   height: auto;
+  width: 11.5rem;
   text-align: center;
   display: inline-flex;
   flex-direction: column;
