@@ -20,7 +20,7 @@ const WeatherCard = ({ weatherData, airData, hourlyForecast }) => {
               ? "Now"
               : `${hourDate.time.hours}:${hourDate.time.minutes}0`
           }
-          temp={hour.temp}
+          temp={`${hour.temp}°`}
           icon="sunny.png"
         />
       );
