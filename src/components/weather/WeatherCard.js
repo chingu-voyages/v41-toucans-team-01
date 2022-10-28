@@ -5,8 +5,28 @@ import "./WeatherCard.css";
 
 import fetchDate from "../helpers/fetchDate";
 
-const WeatherCard = ({ weatherData, airData }) => {
+const WeatherCard = ({ weatherData, airData, hourlyForecast }) => {
   const currentDate = fetchDate(weatherData.dt);
+
+  const renderHourlyForecast = hourlyForecast.map((hour) => {
+    let currentDate = fetchDate(hourlyForecast[0].dt);
+    let hourDate = fetchDate(hour.dt);
+    if (hourDate.date === currentDate.date) {
+      return (
+        <Hour
+          key={hourDate.time.hours}
+          time={
+            hourDate.time.hours === currentDate.time.hours
+              ? "Now"
+              : `${hourDate.time.hours}:${hourDate.time.minutes}0`
+          }
+          temp={hour.temp}
+          icon="sunny.png"
+        />
+      );
+    }
+    return "";
+  });
 
   return (
     <div className="weather-card">
@@ -20,9 +40,7 @@ const WeatherCard = ({ weatherData, airData }) => {
         temp_max={weatherData.main.temp_max}
         temp_min={weatherData.main.temp_min}
       />
-      <div className="hourly-forecast">
-        <Hour temp="12°" id="Now" icon="sunny.png" />
-      </div>
+      <div className="hourly-forecast">{renderHourlyForecast}</div>
       <div className="weather-properties">
         <WeatherProperty
           title="humidity"

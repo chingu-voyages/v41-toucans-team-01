@@ -1,9 +1,9 @@
 import "./Hour.css";
 
-const Hour = ({ id, icon, temp }) => {
+const Hour = ({ time, icon, temp }) => {
   return (
     <div className="hour">
-      <div className="hour-id">{id}</div>
+      <div className="hour-id">{time}</div>
       <div className="hour-data">
         <span className="hour-icon">
           <img src={`./icons/${icon}`} alt="temp-icon" />

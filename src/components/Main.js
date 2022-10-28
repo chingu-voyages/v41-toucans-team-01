@@ -13,13 +13,20 @@ const Main = () => {
   // Variable to hold/set data in state
   const [weatherData, setWeatherData] = useState({});
   const [airData, setAirData] = useState({ quality: 0, description: "Good" });
+  const [forecast, setForecast] = useState({});
 
   // Function so that weatherApi method can be called async because
   // useEffect callback can not be async
   const getData = async (city) => {
     const data = await weatherApi.loadWeather(city);
-    console.log(data);
     setWeatherData(data);
+    getForecast(data.coord.lat, data.coord.lon);
+  };
+
+  const getForecast = async (lat, lon) => {
+    const data = await weatherApi.loadForecast(lat, lon);
+    // console.log(data);
+    setForecast(data);
   };
 
   //get air quality from api with user location
@@ -66,8 +73,12 @@ const Main = () => {
       <PrimaryNav />
       <main className="content-container">
         <WeatherSearchBar fetchWeatherData={fetchWeatherData} />
-        {weatherData.main ? (
-          <WeatherCard weatherData={weatherData} airData={airData} />
+        {weatherData.main && forecast.hourly ? (
+          <WeatherCard
+            weatherData={weatherData}
+            airData={airData}
+            hourlyForecast={forecast.hourly}
+          />
         ) : (
           <Loader />
         )}

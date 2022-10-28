@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const OPENWEATHER_API_KEY = "5c707c30b19b0381825e0aaea1f88a5e";
+const OPENWEATHER_API_KEY = "e84d18c71cb5b54949ced42ad1229ccd";
 
 const openweathermap = axios.create({
   baseURL: "https://api.openweathermap.org/data/2.5",
@@ -21,10 +21,11 @@ const loadWeather = async (location) => {
 };
 
 //function to load weather forecast
-const loadForecast = async (location) => {
-  const response = await openweathermap.get("/forecast", {
+const loadForecast = async (lat, lon) => {
+  const response = await openweathermap.get("/onecall", {
     params: {
-      q: location,
+      lat: lat,
+      lon: lon,
     },
   });
   return response.data;
