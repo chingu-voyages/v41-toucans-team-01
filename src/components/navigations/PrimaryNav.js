@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./PrimaryNav.css";
 import searchIcon from "../../assets/search-icon.png";
+import logo from "../../assets/logo.png";
+
 const PrimaryNav = () => {
   const [navState, setNavState] = useState(false);
 
@@ -29,7 +31,9 @@ const PrimaryNav = () => {
           </li>
         </ul>
       </nav>
-      <div className="logo">Dress / Book</div>
+      <div className="logo">
+        <img src={logo} alt="logo" />
+      </div>
       <div className="nav-search">
         <img src={searchIcon} />
       </div>
