@@ -10,8 +10,8 @@ const waqi = axios.create({
 });
 
 //function to load air quality
-const loadAirQuality = async (location) => {
-  const response = await waqi.get(`/${location}`);
+const loadAirQuality = async (lat, lon) => {
+  const response = await waqi.get(`/geo:${lat};${lon}`);
   return response.data.data;
 };
 

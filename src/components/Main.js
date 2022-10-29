@@ -20,6 +20,7 @@ const Main = () => {
   const getData = async (city) => {
     const data = await weatherApi.loadWeather(city);
     setWeatherData(data);
+    getAirQuality(data.coord.lat, data.coord.lon);
     getForecast(data.coord.lat, data.coord.lon);
   };
 
@@ -30,8 +31,8 @@ const Main = () => {
   };
 
   //get air quality from api with user location
-  const getAirQuality = async (city) => {
-    const airData = await loadAirQuality(city);
+  const getAirQuality = async (lat, lon) => {
+    const airData = await loadAirQuality(lat, lon);
     setAirData(() => {
       let desc;
       if (airData.aqi >= 0 && airData.aqi <= 50) {
@@ -51,19 +52,11 @@ const Main = () => {
     });
   };
 
-  //function to fetch all data from the different api calls
-  //this is so that we can implement a search function to call all
-  //the different apis and render the value to the page.
-  const fetchWeatherData = (city) => {
-    getData(city);
-    getAirQuality(city);
-  };
-
   useEffect(() => {
     //get user's city with ipapi and fetch user data with city value
     const getCity = async () => {
       const cityData = await fetchUserCity();
-      fetchWeatherData(cityData.city);
+      getData(cityData.city);
     };
     getCity();
   }, []);
@@ -72,7 +65,7 @@ const Main = () => {
     <>
       <PrimaryNav />
       <main className="content-container">
-        <WeatherSearchBar fetchWeatherData={fetchWeatherData} />
+        <WeatherSearchBar fetchWeatherData={getData} />
         {weatherData.main && forecast.hourly ? (
           <WeatherCard
             weatherData={weatherData}
