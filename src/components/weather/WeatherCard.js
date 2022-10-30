@@ -21,7 +21,7 @@ const WeatherCard = ({ weatherData, airData, hourlyForecast }) => {
               : `${hourDate.time.hours}:${hourDate.time.minutes}0`
           }
           temp={`${hour.temp}°`}
-          icon="sunny.png"
+          icon={hour.weather[0].icon}
         />
       );
     }
@@ -39,6 +39,7 @@ const WeatherCard = ({ weatherData, airData, hourlyForecast }) => {
         temp={weatherData.main.temp}
         temp_max={weatherData.main.temp_max}
         temp_min={weatherData.main.temp_min}
+        icon={weatherData.weather[0].icon}
       />
       <div className="hourly-forecast">{renderHourlyForecast}</div>
       <div className="weather-properties">

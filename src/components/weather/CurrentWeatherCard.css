@@ -46,3 +46,8 @@
   display: flex;
   gap: 1rem;
 }
+
+.current-temperature-icon img {
+  width: 5rem;
+  height: auto;
+}
