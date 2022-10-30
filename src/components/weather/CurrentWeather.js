@@ -1,6 +1,9 @@
 import "./CurrentWeatherCard.css";
+import fetchIcon from "../helpers/fetchIcon";
 
 const CurrentWeather = (props) => {
+  const icon = fetchIcon(props.icon);
+
   return (
     <div className="current-weather-card">
       <div className="weather-location">
@@ -22,7 +25,7 @@ const CurrentWeather = (props) => {
           </div>
         </div>
         <div className="current-temperature-icon">
-          <img src="./icons/sunny.png" alt="temp-icon" />
+          <img src={`./icons/${icon}.svg`} alt="temp-icon" />
         </div>
       </div>
     </div>
