@@ -2,9 +2,17 @@ const fetchIcon = (icon) => {
   let iconDescription = "";
 
   if (icon === "01d" || icon === "01n") {
-    iconDescription = "clear sky";
+    if (icon === "01d") {
+      iconDescription = "clear sky";
+    } else {
+      iconDescription = "clear sky night";
+    }
   } else if (icon === "02d" || icon === "02n") {
-    iconDescription = "few clouds";
+    if (icon === "02d") {
+      iconDescription = "few clouds";
+    } else {
+      iconDescription = "few clouds night";
+    }
   } else if (icon === "03d" || icon === "03n") {
     iconDescription = "scattered clouds";
   } else if (icon === "04d" || icon === "04n") {
