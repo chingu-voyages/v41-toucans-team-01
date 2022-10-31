@@ -6,6 +6,7 @@ import fetchUserCity from "../apis/ipapi";
 import loadAirQuality from "../apis/waqi";
 import WeatherCard from "./weather/WeatherCard";
 import WeatherSearchBar from "./search/WeatherSearchBar";
+import SearchError from "./errors/SearchError";
 import Loader from "./loader/Loader";
 import "./Main.css";
 
@@ -14,14 +15,21 @@ const Main = () => {
   const [weatherData, setWeatherData] = useState({});
   const [airData, setAirData] = useState({ quality: 0, description: "Good" });
   const [forecast, setForecast] = useState({});
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   // Function so that weatherApi method can be called async because
   // useEffect callback can not be async
   const getData = async (city) => {
-    const data = await weatherApi.loadWeather(city);
-    setWeatherData(data);
-    getAirQuality(data.coord.lat, data.coord.lon);
-    getForecast(data.coord.lat, data.coord.lon);
+    const { response, error, errorMsg } = await weatherApi.loadWeather(city);
+    setError(error);
+    setErrorMsg(errorMsg);
+
+    if (!error) {
+      setWeatherData(response);
+      getAirQuality(response.coord.lat, response.coord.lon);
+      getForecast(response.coord.lat, response.coord.lon);
+    }
   };
 
   const getForecast = async (lat, lon) => {
@@ -66,6 +74,7 @@ const Main = () => {
       <PrimaryNav />
       <main className="content-container">
         <WeatherSearchBar fetchWeatherData={getData} />
+        {error && <SearchError errorMsg={errorMsg} />}
         {weatherData.main && forecast.hourly ? (
           <WeatherCard
             weatherData={weatherData}

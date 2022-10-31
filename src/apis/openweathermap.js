@@ -12,12 +12,19 @@ const openweathermap = axios.create({
 
 //function to load current weather
 const loadWeather = async (location) => {
-  const response = await openweathermap.get("/weather", {
-    params: {
-      q: location,
-    },
-  });
-  return response.data;
+  let error = false;
+  let errorMsg = "";
+
+  const response = await openweathermap
+    .get("/weather", {
+      params: {
+        q: location,
+      },
+    })
+    .catch((e) => {
+      return (error = true), (errorMsg = e.response.data.message);
+    });
+  return { response: response.data, error: error, errorMsg: errorMsg };
 };
 
 //function to load weather forecast

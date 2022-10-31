@@ -28,7 +28,7 @@
 
 .current-temperature-details {
   display: flex;
-  margin-block-start: 2.5rem;
+  margin-block-start: 2rem;
   justify-content: space-around;
   align-items: center;
 }
@@ -38,8 +38,12 @@
 }
 
 .current-temperature > h1 {
-  margin-block-end: 1rem;
   font-weight: 500;
+}
+
+.weather-desc {
+  margin-block-end: 1rem;
+  color: var(--purple);
 }
 
 .current-weather-range {
