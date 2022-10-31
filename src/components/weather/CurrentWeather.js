@@ -19,6 +19,7 @@ const CurrentWeather = (props) => {
       <div className="current-temperature-details">
         <div className="current-temperature">
           <h1>{props.temp}°</h1>
+          <p className="weather-desc">{props.desc}</p>
           <div className="current-weather-range">
             <span>L: {props.temp_min}°</span>
             <span>H: {props.temp_max}°</span>

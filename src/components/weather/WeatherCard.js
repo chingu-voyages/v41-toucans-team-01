@@ -37,6 +37,7 @@ const WeatherCard = ({ weatherData, airData, hourlyForecast }) => {
         city={weatherData.name}
         country={weatherData.sys.country}
         temp={weatherData.main.temp}
+        desc={weatherData.weather[0].description}
         temp_max={weatherData.main.temp_max}
         temp_min={weatherData.main.temp_min}
         icon={weatherData.weather[0].icon}
