@@ -1,16 +1,13 @@
 import { useState, useEffect } from "react";
-import PrimaryNav from "./navigations/PrimaryNav";
-import SecondaryNav from "./navigations/SecondaryNav";
-import weatherApi from "../apis/openweathermap";
-import fetchUserCity from "../apis/ipapi";
-import loadAirQuality from "../apis/waqi";
-import WeatherCard from "./weather/WeatherCard";
-import WeatherSearchBar from "./search/WeatherSearchBar";
-import SearchError from "./errors/SearchError";
-import Loader from "./loader/Loader";
-import "./Main.css";
+import weatherApi from "../../apis/openweathermap";
+import fetchUserCity from "../../apis/ipapi";
+import loadAirQuality from "../../apis/waqi";
+import WeatherCard from "../weather/WeatherCard";
+import WeatherSearchBar from "../search/WeatherSearchBar";
+import SearchError from "../errors/SearchError";
+import Loader from "../loader/Loader";
 
-const Main = () => {
+const WeatherPage = () => {
   // Variable to hold/set data in state
   const [weatherData, setWeatherData] = useState({});
   const [airData, setAirData] = useState({ quality: 0, description: "Good" });
@@ -71,23 +68,19 @@ const Main = () => {
 
   return (
     <>
-      <PrimaryNav />
-      <main className="content-container">
-        <WeatherSearchBar fetchWeatherData={getData} />
-        {error && <SearchError errorMsg={errorMsg} />}
-        {weatherData.main && forecast.hourly ? (
-          <WeatherCard
-            weatherData={weatherData}
-            airData={airData}
-            hourlyForecast={forecast.hourly}
-          />
-        ) : (
-          <Loader />
-        )}
-      </main>
-      <SecondaryNav />
+      <WeatherSearchBar fetchWeatherData={getData} />
+      {error && <SearchError errorMsg={errorMsg} />}
+      {weatherData.main && forecast.hourly ? (
+        <WeatherCard
+          weatherData={weatherData}
+          airData={airData}
+          hourlyForecast={forecast.hourly}
+        />
+      ) : (
+        <Loader />
+      )}
     </>
   );
 };
 
-export default Main;
+export default WeatherPage;

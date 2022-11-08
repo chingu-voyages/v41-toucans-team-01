@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./PrimaryNav.css";
 import searchIcon from "../../assets/search-icon.png";
 import logo from "../../assets/logo.png";
+import { Link } from "react-router-dom";
 
 const PrimaryNav = () => {
   const [navState, setNavState] = useState(false);
@@ -24,7 +25,7 @@ const PrimaryNav = () => {
             <a href="">Lookbook</a>
           </li>
           <li className="nav-list-item">
-            <a href="">Weather</a>
+            <Link to="/weather">Weather</Link>
           </li>
           <li className="nav-list-item">
             <a href="">Blog</a>
