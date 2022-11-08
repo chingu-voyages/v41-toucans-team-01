@@ -8,10 +8,14 @@ import fetchDate from "../helpers/fetchDate";
 const WeatherCard = ({ weatherData, airData, hourlyForecast }) => {
   const currentDate = fetchDate(weatherData.dt);
 
-  const renderHourlyForecast = hourlyForecast.map((hour) => {
-    let currentDate = fetchDate(hourlyForecast[0].dt);
-    let hourDate = fetchDate(hour.dt);
-    if (hourDate.date === currentDate.date) {
+  const renderHourlyForecast = hourlyForecast
+    .filter((item) => {
+      let currentDate = fetchDate(hourlyForecast[0].dt);
+      let itemDate = fetchDate(item.dt);
+      return itemDate.date === currentDate.date;
+    })
+    .map((hour) => {
+      let hourDate = fetchDate(hour.dt);
       return (
         <Hour
           key={hourDate.time.hours}
@@ -24,9 +28,7 @@ const WeatherCard = ({ weatherData, airData, hourlyForecast }) => {
           icon={hour.weather[0].icon}
         />
       );
-    }
-    return "";
-  });
+    });
 
   return (
     <div className="weather-card">
