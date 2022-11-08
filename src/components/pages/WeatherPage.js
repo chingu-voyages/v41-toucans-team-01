@@ -6,6 +6,7 @@ import WeatherCard from "../weather/WeatherCard";
 import WeatherSearchBar from "../search/WeatherSearchBar";
 import SearchError from "../errors/SearchError";
 import Loader from "../loader/Loader";
+import ForecastCard from "../forecast/ForecastCard";
 
 const WeatherPage = () => {
   // Variable to hold/set data in state
@@ -71,11 +72,14 @@ const WeatherPage = () => {
       <WeatherSearchBar fetchWeatherData={getData} />
       {error && <SearchError errorMsg={errorMsg} />}
       {weatherData.main && forecast.hourly ? (
-        <WeatherCard
-          weatherData={weatherData}
-          airData={airData}
-          hourlyForecast={forecast.hourly}
-        />
+        <>
+          <WeatherCard
+            weatherData={weatherData}
+            airData={airData}
+            hourlyForecast={forecast.hourly}
+          />
+          <ForecastCard dailyForecast={forecast.daily} />
+        </>
       ) : (
         <Loader />
       )}
