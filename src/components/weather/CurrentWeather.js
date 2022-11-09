@@ -8,7 +8,7 @@ const CurrentWeather = (props) => {
     <div className="current-weather-card">
       <div className="weather-location">
         <img
-          src="./icons/location-icon.png"
+          src="./icons/location-icon.svg"
           alt="location-icon"
           className="location-icon"
         />
