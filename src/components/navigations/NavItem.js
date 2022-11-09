@@ -2,14 +2,10 @@ import { NavLink } from "react-router-dom";
 
 const NavItem = ({ icon, text, link }) => {
   const style = {
-    background: `url(./icons/${icon}.svg)`,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
+    background: `url(./icons/${icon}.svg) center center no-repeat`,
   };
   const activeStyle = {
-    background: `url(./icons/${icon}-active.svg)`,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
+    background: `url(./icons/${icon}-active.svg) center center no-repeat`,
   };
   return (
     <div className="secondary-nav-item">
