@@ -29,7 +29,7 @@ const App = () => {
           </Protected>
         }
       >
-        <Route index element={<HomePage />} />
+        <Route index element={<Navigate to="/weather" />} />
         <Route path="weather" element={<WeatherPage />} />
         <Route path="chat" element={<ChatPage />} />
         <Route path="profile" element={<ProfilePage />} />
