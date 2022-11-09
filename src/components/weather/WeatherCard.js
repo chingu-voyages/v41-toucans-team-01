@@ -52,22 +52,22 @@ const WeatherCard = ({ weatherData, airData, hourlyForecast }) => {
           <WeatherProperty
             title="humidity"
             value={`${weatherData.main.humidity}%`}
-            icon="humidity.png"
+            icon="humidity.svg"
           />
           <WeatherProperty
             title="wind"
             value={`${weatherData.wind.speed} m/s`}
-            icon="wind.png"
+            icon="wind.svg"
           />
           <WeatherProperty
             title="feels like"
             value={`${weatherData.main.feels_like}°`}
-            icon="feels-like.png"
+            icon="feels-like.svg"
           />
           <WeatherProperty
             title="air quality"
             value={`${airData.quality} ${airData.description}`}
-            icon="air-quality.png"
+            icon="air-quality.svg"
           />
         </div>
       </div>

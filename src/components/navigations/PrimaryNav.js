@@ -1,6 +1,6 @@
 import "./PrimaryNav.css";
 import profileIcon from "../../assets/profile-icon.png";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo.svg";
 import { Link } from "react-router-dom";
 
 const PrimaryNav = () => {
