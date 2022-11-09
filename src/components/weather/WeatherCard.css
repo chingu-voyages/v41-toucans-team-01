@@ -1,6 +1,8 @@
 .weather-card {
   width: 100%;
+  max-width: 800px;
   margin: 0 auto;
+  justify-content: space-between;
 }
 
 .current-date {
@@ -11,9 +13,14 @@
 .hourly-forecast {
   margin-block-start: 1rem;
   display: flex;
+  justify-content: center;
   gap: 0.5rem;
   overflow: hidden;
   overflow-x: scroll;
+}
+
+.hourly-forecast-desktop {
+  display: none;
 }
 
 .weather-properties {
@@ -21,4 +28,20 @@
   grid-template: auto auto / repeat(2, 1fr);
   gap: 1rem;
   margin-block: 1rem;
+}
+
+@media (min-width: 480px) {
+  .weather-card {
+    display: flex;
+  }
+  .hourly-forecast-desktop {
+    display: flex;
+  }
+  .hourly-forecast-mobile {
+    display: none;
+  }
+  .current-date {
+    text-align: center;
+    margin-block: 1.5rem;
+  }
 }

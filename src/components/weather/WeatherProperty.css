@@ -27,3 +27,9 @@
   font-size: 1.3rem;
   color: var(--purple);
 }
+
+@media (min-width: 480px) {
+  .weather-property {
+    width: 20rem;
+  }
+}

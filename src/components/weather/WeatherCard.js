@@ -31,43 +31,50 @@ const WeatherCard = ({ weatherData, airData, hourlyForecast }) => {
     });
 
   return (
-    <div className="weather-card">
+    <>
       <div className="current-date">
         {currentDate.weekday}, {currentDate.date} {currentDate.month}
       </div>
-      <CurrentWeather
-        city={weatherData.name}
-        country={weatherData.sys.country}
-        temp={weatherData.main.temp}
-        desc={weatherData.weather[0].description}
-        temp_max={weatherData.main.temp_max}
-        temp_min={weatherData.main.temp_min}
-        icon={weatherData.weather[0].icon}
-      />
-      <div className="hourly-forecast">{renderHourlyForecast}</div>
-      <div className="weather-properties">
-        <WeatherProperty
-          title="humidity"
-          value={`${weatherData.main.humidity}%`}
-          icon="humidity.png"
+      <div className="weather-card">
+        <CurrentWeather
+          city={weatherData.name}
+          country={weatherData.sys.country}
+          temp={weatherData.main.temp}
+          desc={weatherData.weather[0].description}
+          temp_max={weatherData.main.temp_max}
+          temp_min={weatherData.main.temp_min}
+          icon={weatherData.weather[0].icon}
         />
-        <WeatherProperty
-          title="wind"
-          value={`${weatherData.wind.speed} m/s`}
-          icon="wind.png"
-        />
-        <WeatherProperty
-          title="feels like"
-          value={`${weatherData.main.feels_like}°`}
-          icon="feels-like.png"
-        />
-        <WeatherProperty
-          title="air quality"
-          value={`${airData.quality} ${airData.description}`}
-          icon="air-quality.png"
-        />
+        <div className="hourly-forecast hourly-forecast-mobile">
+          {renderHourlyForecast}
+        </div>
+        <div className="weather-properties">
+          <WeatherProperty
+            title="humidity"
+            value={`${weatherData.main.humidity}%`}
+            icon="humidity.png"
+          />
+          <WeatherProperty
+            title="wind"
+            value={`${weatherData.wind.speed} m/s`}
+            icon="wind.png"
+          />
+          <WeatherProperty
+            title="feels like"
+            value={`${weatherData.main.feels_like}°`}
+            icon="feels-like.png"
+          />
+          <WeatherProperty
+            title="air quality"
+            value={`${airData.quality} ${airData.description}`}
+            icon="air-quality.png"
+          />
+        </div>
       </div>
-    </div>
+      <div className="hourly-forecast hourly-forecast-desktop">
+        {renderHourlyForecast}
+      </div>
+    </>
   );
 };
 
