@@ -1,11 +1,11 @@
 import "./App.css";
 import Layout from "./Layout";
-import WeatherPage from "./pages/WeatherPage";
-import HomePage from "./pages/HomePage";
-import ChatPage from "./pages/ChatPage";
-import ProfilePage from "./pages/ProfilePage";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
+import WeatherPage from "./weather/WeatherPage";
+import HomePage from "./home/HomePage";
+import ChatPage from "./chat/ChatPage";
+import ProfilePage from "./profile/ProfilePage";
+import Login from "./auth/Login";
+import SignUp from "./auth/SignUp";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
 

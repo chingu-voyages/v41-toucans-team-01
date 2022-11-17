@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import weatherApi from "../../apis/openweathermap";
 import fetchUserCity from "../../apis/ipapi";
 import loadAirQuality from "../../apis/waqi";
-import WeatherCard from "../weather/WeatherCard";
+import WeatherCard from "./WeatherCard";
 import WeatherSearchBar from "../search/WeatherSearchBar";
 import SearchError from "../errors/SearchError";
 import Loader from "../loader/Loader";
