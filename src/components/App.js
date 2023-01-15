@@ -1,14 +1,14 @@
 import "./App.css";
 import PrimaryNav from "./navigations/PrimaryNav";
 import SecondaryNav from "./navigations/SecondaryNav";
-import HomePage from "./home/HomePage";
+import WeatherPage from "./weather/WeatherPage";
 
 const App = () => {
   return (
     <>
       <PrimaryNav />
       <main className="content-container">
-        <HomePage />
+        <WeatherPage />
       </main>
       <SecondaryNav />
     </>
