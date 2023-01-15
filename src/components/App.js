@@ -1,11 +1,11 @@
 import "./App.css";
-import PrimaryNav from "./header/PrimaryNav";
+import Header from "./header/Header";
 import WeatherPage from "./weather/WeatherPage";
 
 const App = () => {
   return (
     <>
-      <PrimaryNav />
+      <Header />
       <main className="content-container">
         <WeatherPage />
       </main>
