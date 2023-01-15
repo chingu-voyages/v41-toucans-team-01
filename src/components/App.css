@@ -25,3 +25,13 @@ body {
   font-family: var(--roboto);
   color: var(--black);
 }
+
+.content-container {
+  width: 90%;
+  max-width: 1024px;
+  margin: 0 auto;
+  height: auto;
+  word-wrap: break-word;
+  font-size: 1.6rem;
+  padding-block-start: 1rem;
+}
