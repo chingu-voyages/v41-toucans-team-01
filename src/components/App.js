@@ -1,5 +1,5 @@
 import "./App.css";
-import PrimaryNav from "./navigations/PrimaryNav";
+import PrimaryNav from "./header/PrimaryNav";
 import WeatherPage from "./weather/WeatherPage";
 
 const App = () => {
